@@ -1,174 +1,142 @@
-Chuyển đến nội dung
-Tìm kiếm hoặc chuyển đến…
-Yêu cầu kéo s
-Vấn đề
-không gian mã
-Thương trường
-Khám phá
- 
-@hienhoanghien2006 
-hienhoanghien2006
-/
-gói đầy đủ
-Công cộng
-rẽ nhánh từ lrdrdn/my-opkg-repo
-Không thể rẽ nhánh vì bạn sở hữu kho lưu trữ này và không phải là thành viên của bất kỳ tổ chức nào.
-Mã số
-Yêu cầu kéo
-hành động
-dự án
-Wiki
-Bảo vệ
-Thông tin chi tiết
-Cài đặt
-gói đầy đủ
-/
-README.md
-TRONG
-chủ yếu
- 
+# Personal OpenWrt OPKG Server
+Install dan upgrade paket aplikasi komunitas modifikasi OpenWrt (seperti: OpenClash, Passwall, ShadowSocksR+ Plus, Wegare STL, Tiny File Manager, Xderm Mini, v2rayA, Modeminfo, dll) dengan mudah.
 
-không gian
-
-2
-
-bọc mềm
-1
-# Máy chủ OpenWrt OPKG cá nhân
-2
-Cài đặt gói nâng cấp và ứng dụng sửa đổi OpenWrt (có thể là: OpenClash, Passwall, ShadowSocksR+ Plus, Wegare STL, Tiny File Manager, Xderm Mini, v2rayA, Modeminfo, dll) sau đó.
-3
-​
-4
-Kelebihan cài đặt và cập nhật cho máy chủ tùy chỉnh theo từng bước:
-5
+Kelebihan instalasi dan update menggunakan server kustom seperti ini adalah:
 1. Tidak perlu repot menggunakan wget dan curl yang sangat panjang dan rumit.
-6
-2. Cài đặt gói ipk bằng cách chọn `opkg install nama-paket`.
-7
-3. Gói cài đặt ipk chỉ được phép cài đặt **Hệ thống - Phần mềm** trên LuCI OpenWrt.
-số 8
-​
-9
+2. Instalasi paket ipk bisa menggunakan `opkg install nama-paket`.
+3. Instalasi paket ipk juga bisa menggunakan fitur **System - Software** pada LuCI OpenWrt.
+
 Daftar Isi:
-10
 - [Daftar Arsitektur](#daftar-arsitektur)
-11
-- [Kho lưu trữ Cara Menambah cập nhật phần mềm OpenWrt](#cara-menambah-repository-ke-software-update-openwrt)
-12
-- [Gói cài đặt cara và gói cập nhật](#cara-install-dan-update-paket)
-13
+- [Cara Menambah Repository ke Software Update OpenWrt](#cara-menambah-repository-ke-software-update-openwrt)
+- [Cara Install dan Update Paket](#cara-install-dan-update-paket)
 - [Cara Memeriksa Paket Sudah Terinstal Atau Belum](#cara-memeriksa-paket-sudah-terinstal-atau-belum)
-14
-- [Tín dụng](#tín dụng)
-15
-​
-16
+- [Kredit](#kredit)
+
 ## Daftar Arsitektur
-17
-Kho lưu trữ ini mendukung arsitektur dibawah ini:
-18
-​
-19
+Repository ini mendukung arsitektur dibawah ini:
+
 ```
-20
 aarch64_cortex-a53
-21
 aarch64_cortex-a72
-22
 aarch64_generic
-23
 arm_arm1176jzf-s_vfp
-24
 arm_cortex-a7_neon-vfpv4
-25
 i386_pentium4
-26
 mips_24kc
-27
 mipsel_24kc
-28
 x86_64
-29
 ```
-30
-​
-31
-## Cara Menambah Kho lưu trữ cập nhật phần mềm OpenWrt
-32
-Cara menambahkan kho firmware ini ke, dapat menggunakan 2 cara yaitu:
-33
+
+## Cara Menambah Repository ke Software Update OpenWrt
+Cara menambahkan repository ini ke firmware, dapat menggunakan 2 cara yaitu:
 - [Menggunakan LuCI](#menggunakan-luci)
-34
-- [Menggunakan Terminal](#menggunakan-terminal) được cung cấp bởi JuiceSSH/Termius/Termux
-35
-​
-36
-​
-37
+- [Menggunakan Terminal](#menggunakan-terminal) seperti JuiceSSH/Termius/Termux
+
+
 ### Menggunakan LuCI
-38
-​
-39
-  1. Masuk IP LuCI (contoh: 192.168.1.1), Đăng nhập, Buka **Hệ thống -> Phần mềm -> Cấu hình**
-40
+
+  1. Masuk IP LuCI (contoh: 192.168.1.1), Login, Buka **System -> Software -> Configuration**
   
-41
   2. Tambahkan tanda # (pagar) di depan baris ```option check_signature```, contoh dibawah ini
-42
   
-43
       ubah tulisan dibawah ini
-44
       
-45
       ```
-46
-      tùy chọn check_signature
-47
+      option check_signature
       ```
-48
       
-49
       menjadi seperti ini
-50
       
-51
       ```
-52
-      # tùy chọn check_signature
-53
+      # option check_signature
       ```
-54
-​
-55
-  3. Pada bagian tùy chỉnh nguồn cấp dữ liệu danh sách tambahkan dibawah ini
-56
-​
-Không có tệp nào được chọn
-Đính kèm tệp bằng cách kéo và thả, chọn hoặc dán chúng.
-Tạo kiểu với Markdown được hỗ trợ
-@hienhoanghien2006
-Cam kết thay đổi
-Tóm tắt cam kết
-Cập nhật README.md
-Mô tả mở rộng tùy chọn
-Thêm mô tả mở rộng tùy chọn…
- Cam kết trực tiếp vớichủ yếuchi nhánh.
- Tạo một nhánh mới cho cam kết này và bắt đầu yêu cầu kéo. Tìm hiểu thêm về yêu cầu kéo.
+
+  3. Pada bagian custom feeds tambahkan list dibawah ini
+
+      ```
+      src/gz custom_generic https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/generic
+      src/gz custom_arch https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/arm_cortex-a7_neon-vfpv4
+      ```
+
+      ubah **arm_cortex-a7_neon-vfpv4** dan sesuaikan arsitektur CPU router OpenWrt kalian
+
+      ![](https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/preview/preview1.gif)
  
-chân trang
-© 2023 GitHub, Inc.
-điều hướng chân trang
-Điều kiện
-Sự riêng tư
-Bảo vệ
-Trạng thái
-Tài liệu
-Liên hệ với GitHub
-định giá
-API
-Đào tạo
-Blog
-Về
-Chỉnh sửa full-packgare/README.md tại main · hienhoanghien2006/full-packgare
+### Menggunakan Terminal
+  1. Gunakan salah satu rekomendasi aplikasi Terminal dibawah ini
+      - Terminal TTYD (Paket OpenWrt)
+      - JuiceSSH
+      - Termius
+      - Termux
+      
+      > Catatan: Pengguna dapat menggunakan aplikasi terminal selain yang disebutkan diatas
+  
+  2. Copy paste dibawah di terminal, otomatis akan menyesuaikan tipe arsitektur cpu router
+      
+      ```
+      sed -i 's/option check_signature/# option check_signature/g' /etc/opkg.conf
+      echo "src/gz custom_generic https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/generic" >> /etc/opkg/customfeeds.conf
+      echo "src/gz custom_arch https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/$(grep "OPENWRT_ARCH" /etc/os-release | awk -F '"' '{print $2}')" >> /etc/opkg/customfeeds.conf
+      ```
+
+      > Catatan: untuk firmware OpenWrt 19.07 masih ada yg harus install manual seperti `kcptun-client`, `xray-core` dan `libcap-bin`.
+    
+      ![](https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/preview/preview2.gif)
+    
+
+## Cara Install dan Update Paket
+Cara instalasi repository ini, dapat menggunakan 2 cara yaitu
+- [Menggunakan LuCI](#install-dan-update-paket-menggunakan-luci)
+- [Menggunakan Terminal](#install-dan-update-paket-menggunakan-terminal) seperti JuiceSSH/Termius/Termux
+
+### Install dan Update Paket Menggunakan LuCI
+  1. Masuk IP LuCI (contoh: 192.168.1.1), Login, Buka **System -> Software -> Configuration**
+  2. Tekan tombol **Update Lists**.
+  3. Cari nama paket (seperti: `luci-app-passwall`) pada kolom **Filter**.
+  4. Tekan tombol **Find Package**.
+  5. Scroll sedikit, lihat dibawah ada tab **Installed packages** dan **Available packages** :
+      - Installed packages : paket pada daftar tersebut sudah terpasang.
+      - Available packages : paket pada dafter tersebut belum terpasang.
+  6. Klik **Available packages**, lalu cari nama paket yang di tulis di filter tadi.
+  7. Klik tulisan **Install** pada baris yang terdapat pada nama paket tersebut, lalu tunggu hingga instalasi paket selesai.
+ 
+### Install dan Update Paket Menggunakan Terminal
+  1. Buka aplikasi terminal yang disuka
+  2. Jalankan perintah dibawah ini untuk memperbarui daftar paket yang tersedia di server
+      ```
+      opkg update
+      ```
+  
+  3. Jalankan perintah `opkg install nama-paket`, ganti `nama-paket` menjadi nama paket yang ada (contoh kali ini akan menggunakan paket `luci-app-passwall`).
+      
+      ```
+      opkg install luci-app-passwall
+      ```
+
+## Cara Memeriksa Paket Sudah Terinstal Atau Belum
+Cara instalasi repository ini, dapat menggunakan 2 cara yaitu
+- [Menggunakan LuCI](#cara-memeriksa-status-paket-dengan-luci)
+- [Menggunakan Terminal](#cara-memeriksa-status-paket-dengan-terminal) seperti JuiceSSH/Termius/Termux
+
+### Cara Memeriksa Status Paket dengan LuCI
+  1. Masuk IP LuCI (contoh: 192.168.1.1), lalu Login.
+      - Jika memasang paket yang terdapat kata `luci-app`, biasanya akan muncul di LuCI System/Services/NAS/VPN/Modem/Network dan lain lain.
+      - Jika memasang paket yang terdapat kata `luci-proto`, biasanya akan muncul di **Network -> Pilih salah satu interface -> General Setup -> Protocol**.
+      - Jika memasang paket yang terdapat kata `luci-theme`, biasanya akan muncul di **System -> System Properties -> Language and Style -> Design**.
+      - Jika memasang paket yang di install tidak terdapat kata luci, maka paket tersebut tidak akan menampilkan apapun di LuCI.
+
+### Cara Memeriksa Status Paket dengan Terminal
+  1. Buka terminal
+  2. Jalankan perintah `opkg list-installed nama-paket`, ganti `nama-paket` menjadi nama paket yang ada (contoh kali ini akan menggunakan paket `luci-app-passwall`).
+      
+      ```
+      opkg list-installed luci-app-passwall
+      ```
+      
+      Jika di terminal muncul `luci-app-passwall - 4.43-2` maka paket aplikasi sudah terpasang, jika tidak ada maka paket belum terpasang. Angka `4.43-2` pada terminal tadi adalan versi paket aplikasi yang terinstal.
+      
+      
+### Kredit
+- [Nugroho](https://radenku.com) sebagai pemilik repo, builder dan yang buat video contoh.
+- [Helmi Amirudin](https://helmiau.com/about) sebagai tukang dokumentasi.
