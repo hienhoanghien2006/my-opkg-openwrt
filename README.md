@@ -77,7 +77,7 @@ Cara menambahkan repository ini ke firmware, dapat menggunakan 2 cara yaitu:
       ```
       sed -i 's/option check_signature/# option check_signature/g' /etc/opkg.conf
       echo "src/gz custom_generic https://github.com/hienhoanghien2006/my-opkg-openwrt/tree/main/generic" >> /etc/opkg/customfeeds.conf
-      echo "src/gz custom_arch https://github.com/hienhoanghien2006/my-opkg-openwrt/tree/main/mipsel_24kc$(grep "OPENWRT_ARCH" /etc/os-release | awk -F '"' '{print $2}')" >> /etc/opkg/customfeeds.conf
+      echo "src/gz custom_arch https://github.com/hienhoanghien2006/my-opkg-openwrt/tree/main/$(grep "OPENWRT_ARCH" /etc/os-release | awk -F '"' '{print $2}')" >> /etc/opkg/customfeeds.conf
       ```
 
       > Catatan: untuk firmware OpenWrt 19.07 masih ada yg harus install manual seperti `kcptun-client`, `xray-core` dan `libcap-bin`.
