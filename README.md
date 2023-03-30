@@ -56,10 +56,10 @@ Cara menambahkan repository ini ke firmware, dapat menggunakan 2 cara yaitu:
 
       ```
       src/gz custom_generic https://github.com/hienhoanghien2006/my-opkg-openwrt/tree/main/generic
-      src/gz custom_arch https://github.com/hienhoanghien2006/my-opkg-openwrt/
+      src/gz custom_arch https://github.com/hienhoanghien2006/my-opkg-openwrt/tree/main/mipsel_24kc
       ```
 
-      ubah **arm_cortex-a7_neon-vfpv4** dan sesuaikan arsitektur CPU router OpenWrt kalian
+      ubah **mipsel_24kc** dan sesuaikan arsitektur CPU router OpenWrt kalian
 
       ![](https://raw.githubusercontent.com/lrdrdn/my-opkg-repo/main/preview/preview1.gif)
  
@@ -77,7 +77,7 @@ Cara menambahkan repository ini ke firmware, dapat menggunakan 2 cara yaitu:
       ```
       sed -i 's/option check_signature/# option check_signature/g' /etc/opkg.conf
       echo "src/gz custom_generic https://github.com/hienhoanghien2006/my-opkg-openwrt/tree/main/generic" >> /etc/opkg/customfeeds.conf
-      echo "src/gz custom_arch https://github.com/hienhoanghien2006/my-opkg-openwrt/main/$(grep "OPENWRT_ARCH" /etc/os-release | awk -F '"' '{print $2}')" >> /etc/opkg/customfeeds.conf
+      echo "src/gz custom_arch https://github.com/hienhoanghien2006/my-opkg-openwrt/tree/main/mipsel_24kc$(grep "OPENWRT_ARCH" /etc/os-release | awk -F '"' '{print $2}')" >> /etc/opkg/customfeeds.conf
       ```
 
       > Catatan: untuk firmware OpenWrt 19.07 masih ada yg harus install manual seperti `kcptun-client`, `xray-core` dan `libcap-bin`.
